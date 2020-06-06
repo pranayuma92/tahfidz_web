@@ -1,10 +1,10 @@
 import React from 'react'
 import Header from '../components/Header'
+import Hafalan from '../components/Hafalan'
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { editUser } from '../store/actions/userAction'
-
 
 class EditUser extends React.Component {
 	state = {
@@ -95,7 +95,7 @@ class EditUser extends React.Component {
 				                    <div className="col-md-6">
 				                    	<div className="form-group">
 					                        <label>Birth Date</label>
-					                        <input onChange={this.handleChange} className="form-control au-input au-input--full" type="text" id="birth" value={this.state.birth} disabled={`${this.state.edit ? '' : 'disabled'}`}/>
+					                        <input onChange={this.handleChange} className="form-control au-input au-input--full" type="date" id="birth" value={this.state.birth} disabled={`${this.state.edit ? '' : 'disabled'}`}/>
 					                    </div>
 					                    <div className="form-group">
 					                        <label>Address</label>
@@ -121,27 +121,7 @@ class EditUser extends React.Component {
 			               	</div>
 		                </div>
 		                <br />
-		                <div className="au-card">
-		                	<h3>Module Subscribtions</h3>
-			               	<div className="table-responsive m-b-40">
-	                            <table className="table table-borderless table-data3">
-	                                <thead>
-	                                    <tr>
-	                                        <th>#</th>
-	                                        <th>Module Name</th>
-	                                        <th>Aksi</th>
-	                                    </tr>
-	                                </thead>
-	                                <tbody>
-	                                    <tr>
-	                                        <td>1</td>
-	                                        <td>Hafalan A</td>
-	                                        <td>Edit</td>
-	                                    </tr>
-	                                </tbody>
-	                            </table>
-	                        </div>
-		                </div>
+		                <Hafalan data={user.hafalan} uid={this.props.match.params.id}/>
 	                </div>
 	            </div>
 	        </div>

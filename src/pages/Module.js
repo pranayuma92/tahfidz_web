@@ -16,20 +16,20 @@ class Module extends React.Component {
 	render(){
 		console.log(this.props)
 		return(
-			<>
+			<React.Fragment>
 	    	<Header title="Materi"/>
 	        <div className="main-content">
 	            <div className="section__content section__content--p30">
 	                <div className="container-fluid">
-	                <button onClick={this.handleAddNewModule}>add</button>
+	                <button onClick={() => this.props.history.push('/add-module', {id: 0, edit: false})}>add</button>
 	                	<div className="row">
 	                		<div className="col-md-6">
-			                	<div className="au-card">
+			                	<div className="au-card" onClick={() => this.props.history.push('/module-overview/makharijul', { title: 'Makharijul Huruf'})}>
 			                		Makharijul Huruf
 			                    </div>
 	                		</div>
 	                		<div className="col-md-6">
-			                	<div className="au-card">
+			                	<div className="au-card" onClick={() => this.props.history.push('/module-overview/mad', { title: 'Mad'})}>
 			                		Mad
 			                    </div>
 	                		</div>
@@ -37,12 +37,12 @@ class Module extends React.Component {
 	                	<br />
 	                	<div className="row">
 	                		<div className="col-md-6">
-			                	<div className="au-card">
+			                	<div className="au-card" onClick={() => this.props.history.push('/module-overview/dengung', { title: 'Dengung'})}>
 			                		Dengung
 			                    </div>
 	                		</div>
 	                		<div className="col-md-6">
-			                	<div className="au-card">
+			                	<div className="au-card" onClick={() => this.props.history.push('/module-overview/sifat-huruf', { title: 'Sifat Huruf'})}>
 			                		Sifat Huruf
 			                    </div>
 	                		</div>
@@ -50,7 +50,7 @@ class Module extends React.Component {
 	                </div>
 	            </div>
 	        </div>
-	        </>
+	        </React.Fragment>
 		)
 	}
 }

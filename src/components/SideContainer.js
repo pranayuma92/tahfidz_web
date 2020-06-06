@@ -11,6 +11,8 @@ import Mushaf from '../pages/Mushaf'
 import SurahSingle from '../pages/SurahSingle'
 import EditUser from '../pages/EditUser'
 import Module from '../pages/Module'
+import AddModule from '../pages/AddModule'
+import ModuleOverview from '../pages/ModuleOverview'
 import SidePanel from './SidePanel'
 
 const SideContainer = (props) => {
@@ -31,6 +33,8 @@ const SideContainer = (props) => {
 				<Route path="/surah/:number" component={SurahSingle} />
 				<Route path="/user/:id" component={EditUser} />
 				<Route path="/module" component={Module} />
+				<Route path="/add-module" component={AddModule} />
+				<Route path="/module-overview/:mod" component={ModuleOverview} />
 				<Route component={Home} />
 			</Switch>
 		</div>

@@ -20,7 +20,8 @@ const ModuleOverview = ({ history, match, location, module }) => {
 				<div className="section__content section__content--p30">
 	                <div className="container-fluid">
 	                 	<div className="au-card">
-	                    	<h3 style={{marginBottom: '20px'}}>Materi {location.state.title}</h3>
+	                		<button type="button" className="btn btn-outline-primary" onClick={() => history.push('/add-module', {id: 0, edit: false})}><i className="fa fa-plus"></i> Add New</button>
+	                    	<h3 style={{marginBottom: '20px', marginTop: '20px'}}>Materi {location.state.title}</h3>
 	                    	<ul className="list-group list-group-flush">
 	                    	{ modules && modules.map(item => (
 								<li className="list-group-item d-flex justify-content-between align-items-center" key={item.id}>

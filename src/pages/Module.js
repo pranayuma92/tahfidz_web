@@ -21,7 +21,7 @@ class Module extends React.Component {
 	        <div className="main-content">
 	            <div className="section__content section__content--p30">
 	                <div className="container-fluid">
-	                <button type="button" className="btn btn-outline-primary" onClick={() => this.props.history.push('/add-module', {id: 0, edit: false})}><i className="fa fa-plus"></i> Add New</button>
+	                <button style={{marginBottom: '30px'}} type="button" className="btn btn-outline-primary" onClick={() => this.props.history.push('/add-module', {id: 0, edit: false})}><i className="fa fa-plus"></i> Add New</button>
 	                	<div className="row">
 	                		<div className="col-md-6">
 			                	<div className="au-card" onClick={() => this.props.history.push('/module-overview/makharijul', { title: 'Makharijul Huruf'})}>

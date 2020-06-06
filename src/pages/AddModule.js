@@ -28,7 +28,7 @@ const AddModule = ({ history, addNewCatModule, editCatModule, location, module }
 			return 
 		}
 
-		console.log(title,content,cat,img,sound)
+		setMessage('Memproses...')
 		const modules = { title,content,cat,img,sound }
 
 		if(edit){

@@ -30,6 +30,20 @@ const editCatModule = (modules, id, callback, fallback) => {
 	} 
 }
 
+const removeCatModule = (id, callback, fallback) => {
+	return (dispatch, getState, { getFirestore }) => {
+		const firestore = getFirestore()
+		firestore.collection('cat_module').doc(id).delete()
+		.then( res => {
+			dispatch({ type: 'REMOVE_HAFALAN_SUCCESS' })
+			callback()
+		}).catch( error => {
+			dispatch({ type: 'ACTION_ERROR', error })
+			fallback()
+		})
+	}
+}
+
 const addHafalan = (uid, data, callback) => {
 	return (dispacth, getState, { getFirestore }) => {
 		const firestore = getFirestore()
@@ -78,4 +92,4 @@ const removeHafalan = (id, callback) => {
 	}
 }
 
-export { addNewCatModule, editCatModule, addHafalan, editHafalan, removeHafalan }
+export { addNewCatModule, editCatModule, removeCatModule, addHafalan, editHafalan, removeHafalan }

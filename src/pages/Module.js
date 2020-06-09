@@ -37,8 +37,8 @@ class Module extends React.Component {
 	                	<br />
 	                	<div className="row">
 	                		<div className="col-md-6">
-			                	<div className="au-card" onClick={() => this.props.history.push('/module-overview/dengung', { title: 'Dengung'})}>
-			                		Dengung
+			                	<div className="au-card" onClick={() => this.props.history.push('/module-overview/hukum-idgham', { title: 'Hukum Idgham'})}>
+			                		Hukum Idgham
 			                    </div>
 	                		</div>
 	                		<div className="col-md-6">
@@ -47,6 +47,33 @@ class Module extends React.Component {
 			                    </div>
 	                		</div>
 	                	</div>
+	                	<br />
+	                	<div className="row">
+	                		<div className="col-md-6">
+			                	<div className="au-card" onClick={() => this.props.history.push('/module-overview/qolqolah', { title: 'Qolqolah'})}>
+			                		Qolqolah
+			                    </div>
+	                		</div>
+	                		<div className="col-md-6">
+			                	<div className="au-card" onClick={() => this.props.history.push('/module-overview/hukum-nun-sukun-tanwin', { title: 'Hukum Nun Sukun & Tanwin'})}>
+			                		Hukum Nun Sukun & Tanwin
+			                    </div>
+	                		</div>
+	                	</div>
+	                	<br />
+	                	<div className="row">
+	                		<div className="col-md-6">
+			                	<div className="au-card" onClick={() => this.props.history.push('/module-overview/hukum-mim-sukun', { title: 'Hukum Mim Sukun'})}>
+			                		Hukum Mim Sukun
+			                    </div>
+	                		</div>
+	                		<div className="col-md-6">
+			                	<div className="au-card" onClick={() => this.props.history.push('/module-overview/hukum-ra', { title: 'Hukum Ra'})}>
+			                		Hukum Ra
+			                    </div>
+	                		</div>
+	                	</div>
+	                	<br />
 	                </div>
 	            </div>
 	        </div>
@@ -56,7 +83,7 @@ class Module extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	addNewCatModule: (modules) => dispatch(addNewCatModule(modules))
+	addNewCatModule: (modules, callback, fallback) => dispatch(addNewCatModule(modules, callback, fallback))
 })
 
 export default connect(null, mapDispatchToProps)(Module)

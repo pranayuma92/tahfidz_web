@@ -23,7 +23,7 @@ const AddModule = ({ history, addNewCatModule, editCatModule, location, module }
 	console.log(module)
 
 	const handleSave = () => {
-		if(title === '' || content === '' || cat === '' || sound === '') {
+		if(title === '' || content === '' || cat === '' ) {
 			handleMessage('Kolom tidak boleh kosong') 
 			return 
 		}
@@ -33,12 +33,6 @@ const AddModule = ({ history, addNewCatModule, editCatModule, location, module }
 
 		if(edit){
 			editCatModule(modules, id, () => {
-				setTitle('')
-				setContent('')
-				setSound('')
-				setCat('')
-				setSound('')
-				setImg('')
 				handleMessage('Berhasil mengedit')
 			})
 		} else {
@@ -59,14 +53,19 @@ const AddModule = ({ history, addNewCatModule, editCatModule, location, module }
 	}
 
 	const handleImageChange = (e) => {
-	    const self = this
 	    e.preventDefault();
 	    let file = e.target.files[0];
-	    let reader = new FileReader();
-	    reader.readAsDataURL(file);
-	    reader.onload = () => {
-	        setImg(reader.result)
-	    };
+	    if(file){
+		    let reader = new FileReader();
+		    reader.readAsDataURL(file);
+		    reader.onload = () => {
+		        setImg(reader.result)
+		    };
+	    }
+	}
+
+	const handleDeleteImg = () => {
+		setImg('')
 	}
 
 	const handleBtn = () => {
@@ -98,13 +97,23 @@ const AddModule = ({ history, addNewCatModule, editCatModule, location, module }
 					                        	<option value="">Pilih Kategori</option>
 					                        	<option value="makharijul">Makharijul Huruf</option>
 					                        	<option value="mad">Mad</option>
-					                        	<option value="dengung">Dengung</option>
+					                        	<option value="qolqolah">qolqolah</option>
+					                        	<option value="hukum-nun-sukun-tanwin">Hukum Nun Sukun & Tanwin</option>
+					                        	<option value="hukum-mim-sukun">Hukum Mim Sukun</option>
+					                        	<option value="hukum-idgham">Hukum Idgham</option>
+					                        	<option value="hukum-ra">Hukum Ra</option>
 					                        	<option value="sifat-huruf">Sifat Huruf</option>
 					                        </select>
 					                    </div>
 					                    <div className="form-group">
-					                        <div onClick={handleBtn} className="img-placeholder">
-												{ img ? <img style={{width: '300px'}} src={img} /> : <button type="button" className="btn btn-outline-primary">Tambah gambar</button> }
+					                        <div className="img-placeholder">
+												{ img ?
+													<React.Fragment> 
+														<button type="button" className="btn btn-outline-danger" onClick={handleDeleteImg} ><i className="fa fa-times"></i></button>
+														<img style={{width: '300px'}} src={img} onClick={handleBtn} />
+													</React.Fragment> : 
+													<button type="button" className="btn btn-outline-primary" onClick={handleBtn}>Tambah gambar</button> 
+												}
 											</div>
 					                    </div>
 					                    <input type="file" id="choose" style={{display: 'none'}} onChange={handleImageChange} />

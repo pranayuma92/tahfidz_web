@@ -13,6 +13,7 @@ import EditUser from '../pages/EditUser'
 import Module from '../pages/Module'
 import AddModule from '../pages/AddModule'
 import ModuleOverview from '../pages/ModuleOverview'
+import Teacher from '../pages/Teacher'
 import SidePanel from './SidePanel'
 
 const SideContainer = (props) => {
@@ -29,6 +30,7 @@ const SideContainer = (props) => {
 			<Switch>
 				<Route path="/" component={Home} exact />
 				<Route path="/student" component={Student} />
+				<Route path="/teacher" component={Teacher} />
 				<Route path="/mushaf" component={Mushaf} />
 				<Route path="/surah/:number" component={SurahSingle} />
 				<Route path="/user/:id" component={EditUser} />

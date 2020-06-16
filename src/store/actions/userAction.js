@@ -72,4 +72,48 @@ const editUser = (newData, callback) => {
 	}
 }
 
-export { signUp, signIn, signOut, editUser }
+const addStudent = (uid, sid, callback) => {
+	return (dispatch, getState, {getFirestore}) => {
+		const firestore = getFirestore()
+
+		firestore.collection('users').doc(uid).set({
+			student: firestore.FieldValue.arrayUnion(sid)
+		}, { merge: true })
+		.then(() => {
+			return firestore.collection('users').doc(sid).set({
+				teacher: firestore.FieldValue.arrayUnion(uid)
+			}, { merge: true })
+		})
+		.then(() => {
+			dispatch({type: 'ACTION_SUCCESS'})
+			callback()
+		})
+		.catch(error => {
+			dispatch({type: 'ACTION_ERROR'})
+		})
+	}
+}
+
+const removeStudent = (uid, sid, callback) => {
+	return (dispatch, getState, {getFirestore}) => {
+		const firestore = getFirestore()
+
+		firestore.collection('users').doc(uid).set({
+			student: firestore.FieldValue.arrayRemove(sid)
+		}, { merge: true })
+		.then(() => {
+			return firestore.collection('users').doc(sid).set({
+				teacher: firestore.FieldValue.arrayRemove(uid)
+			}, { merge: true })
+		})
+		.then(() => {
+			dispatch({type: 'ACTION_SUCCESS'})
+			callback()
+		})
+		.catch(error => {
+			dispatch({type: 'ACTION_ERROR'})
+		})
+	}
+}
+
+export { signUp, signIn, signOut, editUser, addStudent, removeStudent }

@@ -1,27 +1,22 @@
 import React from 'react'
 import Header from '../components/Header'
-import AddNewUserButton from '../components/AddNewUserButton'
 import LoadingScreen from '../components/LoadingScreen'
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom'
 
-class Student extends React.Component {
-	render(){
-		const { users } = this.props
-		const students = users.filter( item => item.role === 'student')
-		
-	    return (
-	    	<React.Fragment>
-	    	<Header title="Siswa" />
-	        <div className="main-content">
+const Teacher = ({ users }) => {
+	const teachers = users.filter( item => item.role === 'teacher')
+
+	return (
+		<React.Fragment>
+			<Header title="Guru" />
+			<div className="main-content">
 	            <div className="section__content section__content--p30">
 	                <div className="container-fluid">
 	                    <div className="au-card">
-			                 <AddNewUserButton />
-			                 <br />
-			                 <div className="table-responsive m-b-40">
+	                    	<div className="table-responsive m-b-40">
 	                            <table className="table table-borderless table-data3">
 	                                <thead>
 	                                    <tr>
@@ -33,9 +28,9 @@ class Student extends React.Component {
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                { !users && <p>Loading</p>}
+	                                { !teachers && <p>Loading</p>}
 	                                {
-	                                	students && students.map((item, index) => (
+	                                	teachers && teachers.map((item, index) => (
 		                                    <tr key={item.id}>
 		                                        <td>{index+1}</td>
 		                                        <td>{item.name}</td>
@@ -48,14 +43,13 @@ class Student extends React.Component {
 	                                </tbody>
 	                            </table>
 	                        </div>
-		                </div>
+	                    </div>
 	                </div>
 	            </div>
 	        </div>
-	        </React.Fragment>
-	    )
-	}
-}
+		</React.Fragment>
+	)
+} 
 
 const mapStateToProps = state => ({
 	users : state.firestore.ordered.users
@@ -66,4 +60,4 @@ export default compose(
 	firestoreConnect([
 		{ collection:'users' }
 	])
-)(Student)
+)(Teacher)

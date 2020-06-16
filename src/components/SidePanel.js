@@ -21,6 +21,11 @@ const SidePanel = (props) => {
                             </Link>
                         </li>
                         <li>
+                            <Link to="/teacher">
+                                <i className="fa fa-users"></i>Guru
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/student">
                                 <i className="fa fa-users"></i>Siswa
                             </Link>

@@ -65,7 +65,7 @@ const Hafalan = ({ data, hafalan, surah, addHafalan, editHafalan, removeHafalan,
 	}
 
 	return(
-		<>
+		<React.Fragment>
 		<div className="au-card">
         	<h3>Hafalan</h3>
         	<button type="button" className="btn btn-outline-success" onClick={handleAdd}><i className="fa fa-plus"></i> add hafalan</button>
@@ -126,7 +126,7 @@ const Hafalan = ({ data, hafalan, surah, addHafalan, editHafalan, removeHafalan,
 	            <button className="au-btn au-btn--block au-btn--green m-b-20" type="submit">{ edit ? 'Save' : 'Add'}</button>
 	        </form>
 		</Modal>
-		</>
+		</React.Fragment>
 	)
 }
 

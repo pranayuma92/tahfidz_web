@@ -41,6 +41,12 @@ const userReducer = (state = initState, action) => {
 		case 'SIGNOUT_SUCCESS' :
 			console.log('signout success')
 			return state;
+		case 'ACTION_SUCCESS' :
+			console.log('action success')
+			return state;
+		case 'ACTION_ERROR' :
+			console.log('action error')
+			return state;
 		default :
 			return state
 	}

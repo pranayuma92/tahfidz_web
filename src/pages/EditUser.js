@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Hafalan from '../components/Hafalan'
+import StudentLists from '../components/StudentLists'
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
@@ -47,8 +48,17 @@ class EditUser extends React.Component {
 
 	render(){
 		const { user, history , match} = this.props
+
+		const renderExtra = () => {
+			if(user.role === 'student'){
+				return <Hafalan data={user.hafalan} uid={this.props.match.params.id}/>
+			} else if(user.role === 'teacher'){
+				return <StudentLists uid={this.props.match.params.id} studentList={user.student}/>
+			}
+		}
+
 		return(
-			<>
+			<React.Fragment>
 			<Header title={user.name} history={history} enableBack/>
 			<div className="main-content">
 	            <div className="section__content section__content--p30">
@@ -121,11 +131,11 @@ class EditUser extends React.Component {
 			               	</div>
 		                </div>
 		                <br />
-		                <Hafalan data={user.hafalan} uid={this.props.match.params.id}/>
+		                { renderExtra() }
 	                </div>
 	            </div>
 	        </div>
-			</>
+			</React.Fragment>
 		)
 	}
 }
@@ -135,7 +145,8 @@ const mapStateToProps = (state, props) => {
 	const users = state.firestore.data.users;
 	const user = users ? users[id] : null;
 	return {
-		user: user
+		user: user,
+		users: users
 	}
 }
 

@@ -33,7 +33,7 @@ class SignIn extends React.Component {
                                 <img src={logo} alt="CoolAdmin" />
                             </a>
                         </div>
-                        <div className="login-form">
+                        <div className="login-form ok">
                             <form onSubmit={this.handleSubmit}>
                                 <div className="form-group">
                                     <label>Email Address</label>

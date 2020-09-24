@@ -49,7 +49,7 @@ class SignIn extends React.Component {
                             	<div className="register-link">
                                     <p>
                                         Don't you have account?
-                                        <a href="#">Sign Up Here</a>
+                                        <a href="#">Daftar</a>
                                     </p>
                                 </div>
                             }
